@@ -3,25 +3,6 @@ import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 import Footer from "./Footer";
 
-const todos = [
-  {
-    id: 1,
-    text: "aaa",
-    completed: true
-  },
-  {
-    id: 2,
-    text: "bbb",
-    completed: true
-  },
-  {
-    id: 3,
-    text: "ccc",
-    completed: false
-  }
-];
-
-const filter = "all";
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +10,7 @@ export default class App extends Component {
       todos: [],
       filter: "all"
     };
+    this.nextTodoId = 0;
   }
 
   getVisableTodos = () => {
@@ -44,14 +26,44 @@ export default class App extends Component {
     });
   };
 
+  addTodo = text => {
+    const todo = {
+      id: this.nextTodoId++,
+      text,
+      completed: false
+    };
+    const newTodos = [todo, ...this.state.todos];
+    this.setState({
+      todos: newTodos
+    });
+  };
+
+  toggleTodo = id => {
+    const newTodos = this.state.todos.map(item => {
+      return item.id === id ? { ...item, completed: !item.completed } : item;
+    });
+    this.setState({
+      todos: newTodos
+    });
+  };
+
+  setVisibilityFilter = filter => {
+    this.setState({
+      filter
+    });
+  };
+
   render() {
     const todos = this.getVisableTodos();
     const { filter } = this.state;
     return (
       <div>
-        <AddTodo />
-        <TodoList todos={todos} />
-        <Footer filter={filter} />
+        <AddTodo addTodo={this.addTodo} />
+        <TodoList todos={todos} toggleTodo={this.toggleTodo} />
+        <Footer
+          filter={filter}
+          setVisibilityFilter={this.setVisibilityFilter}
+        />
       </div>
     );
   }

@@ -8,11 +8,25 @@ export default class AddTodo extends Component {
     };
   }
 
+  handerClick = () => {
+    this.props.addTodo(this.state.text);
+  };
+
+  haderChange = e => {
+    this.setState({
+      text: e.target.value
+    });
+  };
+
   render() {
     return (
       <div>
-        <input type="text" value={this.state.text} />
-        <button>Add</button>
+        <input
+          type="text"
+          value={this.state.text}
+          onChange={this.haderChange}
+        />
+        <button onClick={this.handerClick}>Add</button>
       </div>
     );
   }
