@@ -2,3 +2,7 @@ export const ADD_TODO = "ADD_TODO";
 export const TOGGLE_TODO = "TOGGLE_TODO";
 export const SET_FILTER = "SET_FILTER";
 export const SET_TODO_TEXT = "SET_TODO_TEXT";
+
+export const FETCH_TODOS_REQUEST = "FETCH_TODO_REQUEST";
+export const FETCH_TODOS_SUCESS = "FETCH_TODO_SUCESS";
+export const FETCH_TODOS_FAILURE = "FETCH_TODO_FAILURE";
