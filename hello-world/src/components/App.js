@@ -23,7 +23,30 @@ const todos = [
 
 const filter = "all";
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: [],
+      filter: "all"
+    };
+  }
+
+  getVisableTodos = () => {
+    const currentFilter = this.state.filter;
+    return this.state.todos.filter(item => {
+      if (currentFilter === "active") {
+        return !item.completed;
+      } else if (currentFilter === "completed") {
+        return item.completed;
+      } else {
+        return true;
+      }
+    });
+  };
+
   render() {
+    const todos = this.getVisableTodos();
+    const { filter } = this.state;
     return (
       <div>
         <AddTodo />
