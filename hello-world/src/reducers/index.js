@@ -1,7 +1,7 @@
 import {
   ADD_TODO,
   TOGGLE_TODO,
-  SET_TODO_TXET,
+  SET_TODO_TEXT,
   SET_FILTER
 } from "../actions/actionTypes";
 
@@ -37,7 +37,7 @@ const todoApp = (state = initialState, action) => {
             : todo;
         })
       };
-    case SET_TODO_TXET:
+    case SET_TODO_TEXT:
       return {
         ...state,
         text: action.text
