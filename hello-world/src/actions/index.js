@@ -19,22 +19,23 @@ const fetchTodosSuccess = data => ({
   data
 });
 
-const fetchTodosFailure = err => ({
+const fetchTodosFailure = error => ({
   type: FETCH_TODOS_FAILURE,
-  err
+  error
 });
 
 export const fetchTodos = () => {
   return dispatch => {
     dispatch(fetchTodosRequest());
-    return fetch("./mock/todos.json").then(res => {
-      res.json.then(
+    return fetch("./mock/data.json").then(res => {
+      console.log("dg>> res", res);
+      res.json().then(
         data => {
           dispatch(fetchTodosSuccess(data));
         },
-        err => {
-          dispatch(fetchTodosFailure(err));
-          console.log("An error occurred:", err);
+        error => {
+          dispatch(fetchTodosFailure(error));
+          console.log("An error occurred:", error);
         }
       );
     });
