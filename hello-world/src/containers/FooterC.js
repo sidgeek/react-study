@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
-import Footer from "../components/Footer";
 import { setFilter } from "../actions";
-import { getFilter } from "../selectors";
+import Footer from "../components/Footer";
+import {getFilter} from "../selectors"
 
 const mapStateToProps = state => ({
   filter: getFilter(state)

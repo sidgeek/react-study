@@ -4,7 +4,7 @@ import {
   SET_FILTER,
   SET_TODO_TEXT,
   FETCH_TODOS_REQUEST,
-  FETCH_TODOS_SUCESS,
+  FETCH_TODOS_SUCCESS,
   FETCH_TODOS_FAILURE
 } from "./actionTypes";
 
@@ -15,7 +15,7 @@ const fetchTodosRequest = () => ({
 });
 
 const fetchTodosSuccess = data => ({
-  type: FETCH_TODOS_SUCESS,
+  type: FETCH_TODOS_SUCCESS,
   data
 });
 

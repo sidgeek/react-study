@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
-import AddTodo from "../components/AddTodo";
 import { setTodoText, addTodo } from "../actions";
-import { getText } from "../selectors";
+import AddTodo from "../components/AddTodo";
+import {getText} from "../selectors"
 
 const mapStateToProps = state => ({
   text: getText(state)
