@@ -2,9 +2,10 @@ import { connect } from "react-redux";
 import todoList from "../components/TodoList";
 import { toggleTodo, fetchTodos } from "../actions";
 import { getVisableTodos } from "../selectors";
+import { toJS } from "../HOCs/toJS";
 
 const mapStateToProps = state => ({
-  todos: getVisableTodos(state).toJS()
+  todos: getVisableTodos(state)
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -15,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(todoList);
+)(toJS(todoList));
