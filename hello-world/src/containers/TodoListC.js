@@ -4,7 +4,7 @@ import { toggleTodo, fetchTodos } from "../actions";
 import { getVisableTodos } from "../selectors";
 
 const mapStateToProps = state => ({
-  todos: getVisableTodos(state)
+  todos: getVisableTodos(state).toJS()
 });
 
 const mapDispatchToProps = dispatch => ({
