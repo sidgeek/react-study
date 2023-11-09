@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  server:
+    build:
+      context: ../packages/upload-server
+      dockerfile: Dockerfile
+    command: ./entrypoint
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: docker-local
+
+  client:
+    build:
+      context: ../packages/upload-client
+      dockerfile: Dockerfile
+    command: npm run start
+    ports:
+      - "3000:3000"
+    depend: server
+  
